@@ -22,21 +22,66 @@ class Vector:
 			raise ValueError('Vectors must be the same size.')
 		for i in range(len(self.vector)):
 			self.vector[i] += second_vector[i]	
+		return self	
 	
 	def __isub__(self, second_vector): # Jako że jest to odejmowanie w miejscu (-=), zastosuj metodę __isub__.
 		if(len(self.vector)!=len(second_vector)):
 			raise ValueError('Vectors must be the same size.')
 		for i in range(len(self.vector)):
 			self.vector[i] -= second_vector[i]		
+		return self	
 		
 	def __imul__(self, scalar): # Jako że jest to mnożenie przez skalar w miejscu (*=), zastosuj metodę __imul__.
 		for i in range(len(self.vector)):
 			self.vector[i] *= scalar
-			
-	def scalar_product(self, second_vector):
+		
+	def __len__(self):
+		return len(self.vector)
+		
+	def __getitem__(self, index):
+		return self.vector[index]
+		
+	def __setitem__(self, index, value):
+		self.vector[index] = value
+		
+	def __add__(self, second_vector):
+		if(len(self.vector)!=len(second_vector)):
+			raise ValueError('Vectors must be the same size.')
+		temp_vec = []
+		for i in range(len(self.vector)):
+			temp_vec[i] = self.vector[i] + second_vector[i]
+		return temp_vec
+
+	def __sub__(self, second_vector):
+		if(len(self.vector)!=len(second_vector)):
+			raise ValueError('Vectors must be the same size.')
+		temp_vec = []
+		for i in range(len(self.vector)):
+			temp_vec[i] = self.vector[i] - second_vector[i]
+		return temp_vec
+		
+	def __mul__(self, scalar):
+		temp_vec = []
+		for i in range(len(self.vector)):
+			temp_vec[i] = self.vector[i] * scalar
+		return temp_vec	
+		
+	def __matmul__(self, second_vector):
+		if(len(self.vector)!=len(second_vector)):
+			raise ValueError('Vectors must be the same size.')
 		sum_ = 0 # Ponieważ 'sum' jest słowem zarezerwowanym, używaj 'sum_'.
 		for i in range(len(self.vector)):
 			sum_ += (self.vector[i] * second_vector[i])
 		return sum_	
+		
+	def __rmul__(self, scalar):
+		temp_vec = []
+		for i in range(len(self.vector)):
+			temp_vec[i] = scalar * self.vector[i]
+		return temp_vec		
+		
+		
+	
+		
 
 
