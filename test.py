@@ -1,8 +1,12 @@
+#!/usr/bin/python3
+#-*- coding:utf-8 -*-
+
+
 from vector import Vector
 
-list = [1,2,3,4,5]
-second_vector = [2,-1,10,9,3]
-vec = Vector(list)
+list_ = [1,2,3,4,5] # 'list' jest słowem zarezerwowanym, użyj 'list_'.
+second_vector = Vector([2,-1,10,9,3]) # Tutaj też chcesz wektora, nie gołej listy.
+vec = Vector(list_)
 
 vec.print_vector()
 
@@ -20,4 +24,6 @@ vec.print_vector()
 
 scalar_product = vec.scalar_product(second_vector)
 
-print("scalar product: "+str(scalar_product))
+print("scalar product:", scalar_product) # Wystarczy przecinek, nie musisz dodawać stringów.
+
+
