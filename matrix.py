@@ -30,5 +30,21 @@ class Matrix:
 				self.matrix[a][b] += second_matrix[a][b]
 
 	def __matmul__(self, second_matrix):
-		pass
+		if(len(self.matrix[0]) != len(second_matrix)):
+			raise ValueError('Matrixes cannot be multiplied.')
+			
+		x = self.matrix[0]
+		y = second_matrix
+			
+		result = [None] * x
+		for i in range(x):
+			result[x] = [None] * y
+				
+			
+		for i in range(len(self.matrix)):
+			for j in range(len(second_matrix[0])):
+				for k in range(len(second_matrix)):
+					result[i][j] += self.matrix[i][k] * second_matrix[k][j]
+					
+		return result			
 				
